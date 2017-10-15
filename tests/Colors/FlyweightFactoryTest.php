@@ -20,7 +20,7 @@ class FlyweightFactoryTest extends TestCase
     public function testFactory()
     {
         $color = $this->factory->getColor(255, 512, 120);
-        $this->assertInstanceOf(ColorInterface::class, $color);
+        $this->assertTrue($color instanceof ColorInterface);
         $this->assertSame($color, $this->factory->getColor(255, 255, 120));
         $this->assertSame($color->getRed(), 255);
         $this->assertSame($color->getGreen(), 255);
