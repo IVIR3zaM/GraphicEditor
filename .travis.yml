@@ -11,6 +11,7 @@ script:
   - composer install --no-interaction --prefer-source
   - composer validate
   - composer require codeclimate/php-test-reporter
+  - composer require phpunit/phpunit
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
