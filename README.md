@@ -1,5 +1,5 @@
 # Graphic Editor
-[![Build Status](https://travis-ci.org/IVIR3zaM/GraphicEditor.svg?branch=master)](https://travis-ci.org/IVIR3zaM/GraphicEditor) [![Code Climate](https://codeclimate.com/github/IVIR3zaM/GraphicEditor/badges/gpa.svg)](https://codeclimate.com/github/IVIR3zaM/GraphicEditor) [![Issue Count](https://codeclimate.com/github/IVIR3zaM/GraphicEditor/badges/issue_count.svg)](https://codeclimate.com/github/IVIR3zaM/GraphicEditor) [![Test Coverage](https://codeclimate.com/github/IVIR3zaM/GraphicEditor/badges/coverage.svg)](https://codeclimate.com/github/IVIR3zaM/GraphicEditor/coverage)
+[![Build Status](https://travis-ci.org/IVIR3zaM/GraphicEditor.svg?branch=master)](https://travis-ci.org/IVIR3zaM/GraphicEditor) [![Maintainability](https://api.codeclimate.com/v1/badges/2790fdb852cad7e36ecc/maintainability)](https://codeclimate.com/github/IVIR3zaM/GraphicEditor/maintainability) [![Issue Count](https://codeclimate.com/github/IVIR3zaM/GraphicEditor/badges/issue_count.svg)](https://codeclimate.com/github/IVIR3zaM/GraphicEditor) [![Test Coverage](https://codeclimate.com/github/IVIR3zaM/GraphicEditor/badges/coverage.svg)](https://codeclimate.com/github/IVIR3zaM/GraphicEditor/coverage)
 
 This is a test project for a company. It's not a production level library
 
