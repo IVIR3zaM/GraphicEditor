@@ -2,12 +2,12 @@
 namespace IVIR3aM\GraphicEditor\Tests;
 
 use IVIR3aM\GraphicEditor\Color;
-use IVIR3aM\GraphicEditor\PixelFactory;
-use IVIR3aM\GraphicEditor\PixelList;
-use IVIR3aM\GraphicEditor\PixelListFacade;
+use IVIR3aM\GraphicEditor\Pixels\Factory as PixelFactory;
+use IVIR3aM\GraphicEditor\Pixels\PixelList;
+use IVIR3aM\GraphicEditor\Pixels\ListFacade as PixelListFacade;
 use PHPUnit\Framework\TestCase;
 
-class PixelListFacadeTest extends TestCase
+class ListFacadeTest extends TestCase
 {
     /**
      * @var PixelListFacade

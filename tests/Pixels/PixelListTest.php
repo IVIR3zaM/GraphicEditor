@@ -2,7 +2,7 @@
 namespace IVIR3aM\GraphicEditor\Tests;
 
 use IVIR3aM\GraphicEditor\Pixel;
-use IVIR3aM\GraphicEditor\PixelList;
+use IVIR3aM\GraphicEditor\Pixels\PixelList;
 use PHPUnit\Framework\TestCase;
 
 class PixelListTest extends TestCase

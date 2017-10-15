@@ -1,5 +1,7 @@
 <?php
-namespace IVIR3aM\GraphicEditor;
+namespace IVIR3aM\GraphicEditor\Pixels;
+
+use IVIR3aM\GraphicEditor\PixelInterface;
 
 class PixelList implements PixelListInterface
 {

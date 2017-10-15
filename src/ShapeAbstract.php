@@ -1,6 +1,8 @@
 <?php
 namespace IVIR3aM\GraphicEditor;
 
+use IVIR3aM\GraphicEditor\Pixels\ListFacadeInterface as PixelListFacadeInterface;
+
 abstract class ShapeAbstract
 {
     protected $color;

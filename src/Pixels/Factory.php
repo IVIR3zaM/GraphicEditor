@@ -1,7 +1,11 @@
 <?php
-namespace IVIR3aM\GraphicEditor;
+namespace IVIR3aM\GraphicEditor\Pixels;
 
-class PixelFactory implements PixelFactoryInterface
+use IVIR3aM\GraphicEditor\ColorInterface;
+use IVIR3aM\GraphicEditor\Pixel;
+use IVIR3aM\GraphicEditor\PixelInterface;
+
+class Factory implements FactoryInterface
 {
     /**
      * @param ColorInterface $color

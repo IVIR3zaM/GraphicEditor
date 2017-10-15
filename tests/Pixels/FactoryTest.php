@@ -3,10 +3,10 @@ namespace IVIR3aM\GraphicEditor\Tests;
 
 use IVIR3aM\GraphicEditor\Color;
 use IVIR3aM\GraphicEditor\Pixel;
-use IVIR3aM\GraphicEditor\PixelFactory;
+use IVIR3aM\GraphicEditor\Pixels\Factory as PixelFactory;
 use PHPUnit\Framework\TestCase;
 
-class PixelFactoryTest extends TestCase
+class FactoryTest extends TestCase
 {
     /**
      * @var PixelFactory

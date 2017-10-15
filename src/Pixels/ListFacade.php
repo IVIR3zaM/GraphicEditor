@@ -1,7 +1,9 @@
 <?php
-namespace IVIR3aM\GraphicEditor;
+namespace IVIR3aM\GraphicEditor\Pixels;
 
-class PixelListFacade implements PixelListFacadeInterface
+use IVIR3aM\GraphicEditor\ColorInterface;
+
+class ListFacade implements ListFacadeInterface
 {
     /**
      * @var PixelListInterface
@@ -9,11 +11,11 @@ class PixelListFacade implements PixelListFacadeInterface
     protected $pixelList;
 
     /**
-     * @var PixelFactoryInterface
+     * @var FactoryInterface
      */
     protected $pixelFactory;
 
-    public function __construct(PixelListInterface $list, PixelFactoryInterface $factory)
+    public function __construct(PixelListInterface $list, FactoryInterface $factory)
     {
         $this->setPixelList($list);
         $this->setPixelFactory($factory);
@@ -33,14 +35,14 @@ class PixelListFacade implements PixelListFacadeInterface
         return $this->pixelList;
     }
 
-    public function setPixelFactory(PixelFactoryInterface $factory)
+    public function setPixelFactory(FactoryInterface $factory)
     {
         $this->pixelFactory = $factory;
         return $this;
     }
 
     /**
-     * @return PixelFactoryInterface
+     * @return FactoryInterface
      */
     public function getPixelFactory()
     {
