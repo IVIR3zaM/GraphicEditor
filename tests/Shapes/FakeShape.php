@@ -8,6 +8,7 @@ class FakeShape extends ShapeAbstract
 {
     public function getPixels(PixelListFacadeInterface $list)
     {
+        $list->addPixelByPoints($this->getColor(), 0, 0);
         return $list;
     }
 }

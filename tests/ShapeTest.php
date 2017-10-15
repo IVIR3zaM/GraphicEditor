@@ -2,7 +2,11 @@
 namespace IVIR3aM\GraphicEditor\Tests;
 
 use IVIR3aM\GraphicEditor\Color;
+use IVIR3aM\GraphicEditor\Pixels\Factory as PixelFactory;
+use IVIR3aM\GraphicEditor\Pixels\PixelList;
+use IVIR3aM\GraphicEditor\Pixels\ListFacade as PixelListFacade;
 use IVIR3aM\GraphicEditor\Tests\Shapes\FakeShape;
+use TypeError;
 use PHPUnit\Framework\TestCase;
 
 class ShapeTest extends TestCase
@@ -51,5 +55,25 @@ class ShapeTest extends TestCase
 
         $this->shape->setBorderSize('test 123');
         $this->assertSame(0, $this->shape->getBorderSize());
+    }
+
+    public function testGetPixels()
+    {
+        $color = new Color();
+        $this->shape->setColor($color);
+
+        $pixels = new PixelListFacade(new PixelList(), new PixelFactory());
+        $pixels->addPixelByPoints($color, 0, 0);
+
+        $list = new PixelListFacade(new PixelList(), new PixelFactory());
+        $this->assertEquals($pixels, $this->shape->getPixels($list));
+    }
+
+    /**
+     * @expectedException TypeError
+     */
+    public function testExceptionOnNoColor()
+    {
+        $this->shape->getPixels(new PixelListFacade(new PixelList(), new PixelFactory()));
     }
 }
