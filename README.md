@@ -1,4 +1,5 @@
 # Graphic Editor
+[![Build Status](https://travis-ci.org/IVIR3zaM/Grabber.svg?branch=master)](https://travis-ci.org/IVIR3zaM/Grabber) [![Code Climate](https://codeclimate.com/github/IVIR3zaM/Grabber/badges/gpa.svg)](https://codeclimate.com/github/IVIR3zaM/Grabber) [![Issue Count](https://codeclimate.com/github/IVIR3zaM/Grabber/badges/issue_count.svg)](https://codeclimate.com/github/IVIR3zaM/Grabber) [![Test Coverage](https://codeclimate.com/github/IVIR3zaM/Grabber/badges/coverage.svg)](https://codeclimate.com/github/IVIR3zaM/Grabber/coverage)
 
 This is a test project for a company. It's not a production level library
 
