@@ -1,6 +1,7 @@
 <?php
 namespace IVIR3aM\GraphicEditor\Shapes;
 
+use IVIR3aM\GraphicEditor\PixelListFacadeInterface;
 use IVIR3aM\GraphicEditor\ShapeAbstract;
 
 class Square extends ShapeAbstract
@@ -54,23 +55,24 @@ class Square extends ShapeAbstract
 
     /**
      * @todo Take into account the border size
+     * @param PixelListFacadeInterface $list
+     * @return PixelListFacadeInterface
      */
-    public function getPixels()
+    public function getPixels(PixelListFacadeInterface $list)
     {
-        $list = [];
         $y = $this->getY();
         $x = $this->getX();
         for (; $x < $this->getX() + $this->getWidth(); $x++) {
-            $list[] = [$x, $y];
+            $list->addPixelByPoints($this->getColor(), $x, $y);
         }
         for (; $y < $this->getY() + $this->getHeight(); $y++) {
-            $list[] = [$x, $y];
+            $list->addPixelByPoints($this->getColor(), $x, $y);
         }
         for (; $x > $this->getX(); $x--) {
-            $list[] = [$x, $y];
+            $list->addPixelByPoints($this->getColor(), $x, $y);
         }
         for (; $y > $this->getY(); $y--) {
-            $list[] = [$x, $y];
+            $list->addPixelByPoints($this->getColor(), $x, $y);
         }
         return $list;
     }

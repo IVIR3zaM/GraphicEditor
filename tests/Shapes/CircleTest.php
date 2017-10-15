@@ -1,6 +1,10 @@
 <?php
 namespace IVIR3aM\GraphicEditor\Tests\Shapes;
 
+use IVIR3aM\GraphicEditor\Color;
+use IVIR3aM\GraphicEditor\PixelFactory;
+use IVIR3aM\GraphicEditor\PixelList;
+use IVIR3aM\GraphicEditor\PixelListFacade;
 use IVIR3aM\GraphicEditor\Shapes\Circle;
 use PHPUnit\Framework\TestCase;
 
@@ -99,23 +103,30 @@ class CircleTest extends TestCase
 
     public function testGetPixels()
     {
+        $color = new Color();
         $this->shape->setCx(100);
         $this->shape->setCy(100);
         $this->shape->setRadius(2);
+        $this->shape->setColor($color);
 
-        $pixels = array(
-            [102, 100],
-            [101, 101],
-            [100, 102],
-            [99, 101],
-            [98, 101],
-            [98, 100],
-            [98, 99],
-            [99, 98],
-            [100, 98],
-            [101, 98],
-            [101, 99]
-        );
-        $this->assertEquals($pixels, $this->shape->getPixels());
+        $pixels = new PixelListFacade(new PixelList(), new PixelFactory());
+        foreach (array(
+                     [102, 100],
+                     [101, 101],
+                     [100, 102],
+                     [99, 101],
+                     [98, 101],
+                     [98, 100],
+                     [98, 99],
+                     [99, 98],
+                     [100, 98],
+                     [101, 98],
+                     [101, 99]
+                 ) as $point) {
+            $pixels->addPixelByPoints($color, $point[0], $point[1]);
+        }
+
+        $list = new PixelListFacade(new PixelList(), new PixelFactory());
+        $this->assertEquals($pixels, $this->shape->getPixels($list));
     }
 }

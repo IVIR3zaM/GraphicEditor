@@ -29,5 +29,9 @@ abstract class ShapeAbstract
         return $this->borderSize;
     }
 
-    abstract public function getPixels();
+    /**
+     * @param PixelListFacadeInterface $list
+     * @return PixelListFacadeInterface
+     */
+    abstract public function getPixels(PixelListFacadeInterface $list);
 }

@@ -1,6 +1,7 @@
 <?php
 namespace IVIR3aM\GraphicEditor\Shapes;
 
+use IVIR3aM\GraphicEditor\PixelListFacadeInterface;
 use IVIR3aM\GraphicEditor\ShapeAbstract;
 
 class Circle extends ShapeAbstract
@@ -44,18 +45,23 @@ class Circle extends ShapeAbstract
 
     /**
      * @todo Take into account the border size
+     * @param PixelListFacadeInterface $list
+     * @return PixelListFacadeInterface
      */
-    public function getPixels()
+    public function getPixels(PixelListFacadeInterface $list)
     {
-        $points = intval($this->getRadius() * 2 * pi());
-        $list = [];
-        $slice = (2 * pi()) / $points;
-        for ($i = 0; $i < $points; $i++) {
+        $count = intval($this->getRadius() * 2 * pi());
+        $points = [];
+        $slice = (2 * pi()) / $count;
+        for ($i = 0; $i < $count; $i++) {
             $angle = $slice * $i;
             $x = intval($this->getCx() + ($this->getRadius() * cos($angle)));
             $y = intval($this->getCy() + ($this->getRadius() * sin($angle)));
-            $list["$x-$y"] = [$x, $y];
+            $points["$x-$y"] = [$x, $y];
         }
-        return array_values($list);
+        foreach($points as $point) {
+            $list->addPixelByPoints($this->getColor(), $point[0], $point[1]);
+        }
+        return $list;
     }
 }

@@ -1,6 +1,10 @@
 <?php
 namespace IVIR3aM\GraphicEditor\Tests\Shapes;
 
+use IVIR3aM\GraphicEditor\Color;
+use IVIR3aM\GraphicEditor\PixelFactory;
+use IVIR3aM\GraphicEditor\PixelList;
+use IVIR3aM\GraphicEditor\PixelListFacade;
 use IVIR3aM\GraphicEditor\Shapes\Square;
 use PHPUnit\Framework\TestCase;
 
@@ -107,20 +111,27 @@ class SquareTest extends TestCase
 
     public function testGetPixels()
     {
+        $color = new Color();
         $this->shape->setX(10);
         $this->shape->setY(10);
         $this->shape->setWidth(2);
+        $this->shape->setColor($color);
 
-        $pixels = array(
-            [10,10],
-            [11,10],
-            [12,10],
-            [12,11],
-            [12,12],
-            [11,12],
-            [10,12],
-            [10,11],
-        );
-        $this->assertEquals($pixels, $this->shape->getPixels());
+        $pixels = new PixelListFacade(new PixelList(), new PixelFactory());
+        foreach (array(
+                     [10,10],
+                     [11,10],
+                     [12,10],
+                     [12,11],
+                     [12,12],
+                     [11,12],
+                     [10,12],
+                     [10,11],
+                 ) as $point) {
+            $pixels->addPixelByPoints($color, $point[0], $point[1]);
+        }
+
+        $list = new PixelListFacade(new PixelList(), new PixelFactory());
+        $this->assertEquals($pixels, $this->shape->getPixels($list));
     }
 }
