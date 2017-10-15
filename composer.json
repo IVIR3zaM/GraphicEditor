@@ -1,0 +1,26 @@
+{
+  "name": "ivir3zam/graphic-editor",
+  "type": "library",
+  "description": "A test project for a company",
+  "keywords": [
+    "graphic-editor"
+  ],
+  "homepage": "https://github.com/IVIR3zaM/GraphicEditor",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mohammadreza Maghoul",
+      "email": "m.reza.maghool@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "IVIR3aM\\GraphicEditor\\": "src",
+      "IVIR3aM\\GraphicEditor\\Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "dev"
+}
