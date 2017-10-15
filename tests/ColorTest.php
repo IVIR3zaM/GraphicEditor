@@ -16,6 +16,15 @@ class ColorTest extends TestCase
         $this->color = new Color();
     }
 
+    public function testNumberSanitize()
+    {
+        $this->assertSame(15, Color::numberSanitize(15));
+        $this->assertSame(12, Color::numberSanitize(-12));
+        $this->assertSame(0, Color::numberSanitize(false));
+        $this->assertSame(255, Color::numberSanitize(256));
+        $this->assertSame(255, Color::numberSanitize('-1230'));
+    }
+
     public function testRed()
     {
         $this->color->setRed(1);

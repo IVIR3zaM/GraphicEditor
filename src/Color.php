@@ -14,7 +14,7 @@ class Color implements ColorInterface
         $this->setBlue($blue);
     }
 
-    protected function numberSanitize($number)
+    public static function numberSanitize($number)
     {
         $number = abs(intval($number));
         if ($number > 255) {
@@ -25,7 +25,7 @@ class Color implements ColorInterface
 
     public function setRed($number)
     {
-        $this->red = $this->numberSanitize($number);
+        $this->red = static::numberSanitize($number);
         return $this;
     }
 
@@ -36,7 +36,7 @@ class Color implements ColorInterface
 
     public function setGreen($number)
     {
-        $this->green = $this->numberSanitize($number);
+        $this->green = static::numberSanitize($number);
         return $this;
     }
 
@@ -47,7 +47,7 @@ class Color implements ColorInterface
 
     public function setBlue($number)
     {
-        $this->blue = $this->numberSanitize($number);
+        $this->blue = static::numberSanitize($number);
         return $this;
     }
 
