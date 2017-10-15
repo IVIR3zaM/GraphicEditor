@@ -1,12 +1,12 @@
 <?php
 namespace IVIR3aM\GraphicEditor\Tests;
 
+use Exception;
 use IVIR3aM\GraphicEditor\Color;
 use IVIR3aM\GraphicEditor\Pixels\Factory as PixelFactory;
-use IVIR3aM\GraphicEditor\Pixels\PixelList;
 use IVIR3aM\GraphicEditor\Pixels\ListFacade as PixelListFacade;
+use IVIR3aM\GraphicEditor\Pixels\PixelList;
 use IVIR3aM\GraphicEditor\Tests\Shapes\FakeShape;
-use TypeError;
 use PHPUnit\Framework\TestCase;
 
 class ShapeTest extends TestCase
@@ -24,8 +24,6 @@ class ShapeTest extends TestCase
     public function testColor()
     {
         $color = new Color();
-        $this->assertNotSame($color, $this->shape->getColor());
-
         $this->shape->setColor($color);
         $this->assertSame($color, $this->shape->getColor());
     }
@@ -70,7 +68,7 @@ class ShapeTest extends TestCase
     }
 
     /**
-     * @expectedException TypeError
+     * @expectedException Exception
      */
     public function testExceptionOnNoColor()
     {

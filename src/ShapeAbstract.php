@@ -2,6 +2,7 @@
 namespace IVIR3aM\GraphicEditor;
 
 use IVIR3aM\GraphicEditor\Pixels\ListFacadeInterface as PixelListFacadeInterface;
+use Exception;
 
 abstract class ShapeAbstract
 {
@@ -17,6 +18,9 @@ abstract class ShapeAbstract
 
     public function getColor()
     {
+        if (!is_a($this->color, ColorInterface::class)) {
+            throw new Exception('Color attribute is not defined yet');
+        }
         return $this->color;
     }
 
