@@ -18,7 +18,7 @@ abstract class ShapeAbstract
 
     public function getColor()
     {
-        if (!is_a($this->color, ColorInterface::class)) {
+        if (!($this->color instanceof ColorInterface)) {
             throw new Exception('Color attribute is not defined yet');
         }
         return $this->color;
