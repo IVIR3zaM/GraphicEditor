@@ -5,7 +5,7 @@ use IVIR3aM\GraphicEditor\ColorInterface;
 use IVIR3aM\GraphicEditor\DriverInterface;
 use IVIR3aM\GraphicEditor\Pixels\PixelListInterface;
 use IVIR3aM\GraphicEditor\ResponseInterface;
-use IVIR3aM\GraphicEditor\Responses\Factory as ResponseFactory;
+use IVIR3aM\GraphicEditor\Responses\FactoryInterface as ResponseFactoryInterface;
 use Exception;
 
 class BinaryImage implements DriverInterface
@@ -111,10 +111,10 @@ class BinaryImage implements DriverInterface
 
     /**
      * @param PixelListInterface $pixels
-     * @param ResponseFactory $factory
+     * @param ResponseFactoryInterface $factory
      * @return ResponseInterface
      */
-    public function draw(PixelListInterface $pixels, ResponseFactory $factory)
+    public function draw(PixelListInterface $pixels, ResponseFactoryInterface $factory)
     {
         $canvas = $this->getCanvasSize($pixels);
         $img = imagecreatetruecolor($canvas[0], $canvas[1]);

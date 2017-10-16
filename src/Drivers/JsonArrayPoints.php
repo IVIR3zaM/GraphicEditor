@@ -4,16 +4,16 @@ namespace IVIR3aM\GraphicEditor\Drivers;
 use IVIR3aM\GraphicEditor\DriverInterface;
 use IVIR3aM\GraphicEditor\Pixels\PixelListInterface;
 use IVIR3aM\GraphicEditor\ResponseInterface;
-use IVIR3aM\GraphicEditor\Responses\Factory as ResponseFactory;
+use IVIR3aM\GraphicEditor\Responses\FactoryInterface as ResponseFactoryInterface;
 
 class JsonArrayPoints implements DriverInterface
 {
     /**
      * @param PixelListInterface $pixels
-     * @param ResponseFactory $factory
+     * @param ResponseFactoryInterface $factory
      * @return ResponseInterface
      */
-    public function draw(PixelListInterface $pixels, ResponseFactory $factory)
+    public function draw(PixelListInterface $pixels, ResponseFactoryInterface $factory)
     {
         $array = [];
         foreach ($pixels as $pixel) {
