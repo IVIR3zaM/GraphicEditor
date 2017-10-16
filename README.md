@@ -26,3 +26,25 @@ The first is used in Photoshop, Paint and many softwares. Pixels are the purest 
 The second is used in Illustrator, Corel Draw and the others. Vector is actually the formula to recreate a Shape base on 4 main types of Lines. 1- Strait Line, 2- Arc Line, 3- Quadratic Bézier Curve, 4- Cubic Bézier Curve. 
 
 Implementing Vectors in many Drivers is a challenging task and using them is an excessive obsession behavior here. And really we don't need them right now, so I decide to use Pixels form for Shapes. Now implementing any Shape is easy. I should abstract Shapes with an Abstract method for getting a list of their Pixels. It's all, lets start codding!
+
+## How to use
+This project powered by FlyWeight, Facade, Factory and Iterator Design Patterns. For a quick start you can use EditorFacade class. By watching it's test you can find how it's working. But for a reliable approach you can use the simple command line tool (cli.php). here is an example:
+
+```
+php cli.php Editor:Json '{"circle":{"cx":300,"cy":300,"radius":300,"color":"#ff0000"}}'
+```
+
+The first parameter is [task name]:[action name]. And the second parameter is json encoded list of shapes. This command simply print points as a json string. Now see this example:
+
+```
+php cli.php Editor:Image '{"circle":{"cx":300,"cy":300,"radius":300,"color":"#ff0000"}}' png 0
+```
+
+This command use BinaryImage Driver for it's output and show you binary data for a png image (third parameter) with no padding (forth parameter).
+
+It's simple!
+
+## How to add new Shape or new Driver
+For adding new Shape only add new class in namespace IVIR3aM\GraphicEditor\Shapes and extends ShapeAbstract. Then you can add getter-setters for it's parameters and also implement getPixels() method to calculate the shape's pixels to show.
+
+For adding new Driver only add new class in namespace IVIR3aM\GraphicEditor\Drivers and implements DriverInterface. Then the only method that you have to implement is draw() method that get PixelList and return a Response.
