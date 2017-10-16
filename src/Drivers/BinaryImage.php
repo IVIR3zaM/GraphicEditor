@@ -21,21 +21,24 @@ class BinaryImage implements DriverInterface
         $this->setPadding($padding);
     }
 
+    protected function testImageType($ext, $constant, $function)
+    {
+        if (defined($constant) && function_exists($function) && imagetypes() & constant($constant)) {
+            $this->types[$ext] = $function;
+        }
+    }
+
     protected function defineTypes()
     {
-        $types = imagetypes();
-        if (function_exists('imagepng') && $types & IMG_PNG) {
-            $this->types['png'] = 'imagepng';
-        }
-        if (function_exists('imagejpeg') && $types & IMG_JPG) {
-            $this->types['jpg'] = 'imagejpeg';
-            $this->types['jpeg'] = 'imagejpeg';
-        }
-        if (function_exists('imagegif') && $types & IMG_GIF) {
-            $this->types['gif'] = 'imagegif';
-        }
-        if (defined('IMG_BMP') && function_exists('imagebmp') && $types & IMG_BMP) {
-            $this->types['bmp'] = 'imagebmp';
+        $types = [
+            ['png', 'IMG_PNG', 'imagepng'],
+            ['jpg', 'IMG_JPG', 'imagejpeg'],
+            ['jpeg', 'IMG_JPG', 'imagejpeg'],
+            ['gif', 'IMG_GIF', 'imagegif'],
+            ['bmp', 'IMG_BMP', 'imagebmp'],
+        ];
+        foreach ($types as $type) {
+            $this->testImageType($type[0], $type[1], $type[2]);
         }
     }
 
