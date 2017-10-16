@@ -1,5 +1,5 @@
 <?php
-namespace IVIR3aM\GraphicEditor\Tests;
+namespace IVIR3aM\GraphicEditor\Tests\Pixels;
 
 use IVIR3aM\GraphicEditor\Color;
 use IVIR3aM\GraphicEditor\Pixels\Factory as PixelFactory;
