@@ -100,4 +100,13 @@ class ColorTest extends TestCase
         $this->assertSame(36, $this->color->getGreen());
         $this->assertSame(215, $this->color->getBlue());
     }
+
+    public function testHexRgb()
+    {
+        $this->color->setRed(127);
+        $this->color->setGreen(15);
+        $this->color->setBlue(201);
+        $this->assertSame('#7f0fc9', $this->color->getHexColorCode());
+        $this->assertSame('rgb(127, 15, 201)', $this->color->getRgbColorCode());
+    }
 }

@@ -55,4 +55,26 @@ class Color implements ColorInterface
     {
         return $this->blue;
     }
+
+    public static function convertToFixedSizeHex($number, $size = 2)
+    {
+        $number = dechex($number);
+        while (strlen($number) < $size) {
+            $number = '0' . $number;
+        }
+        return $number;
+    }
+
+    public function getHexColorCode()
+    {
+        $red = static::convertToFixedSizeHex($this->getRed());
+        $green = static::convertToFixedSizeHex($this->getGreen());
+        $blue = static::convertToFixedSizeHex($this->getBlue());
+        return "#{$red}{$green}{$blue}";
+    }
+
+    public function getRgbColorCode()
+    {
+        return 'rgb(' . $this->getRed() . ', ' . $this->getGreen() . ', ' . $this->getBlue() . ')';
+    }
 }
