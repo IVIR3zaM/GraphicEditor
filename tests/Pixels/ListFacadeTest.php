@@ -28,5 +28,8 @@ class ListFacadeTest extends TestCase
 
         $pixel = $this->list->getPixelFactory()->makePixel(new Color(), 327, 127);
         $this->assertEquals($pixel, $this->list->getPixelList()->getPixel(0));
+
+        $this->list->resetPixels();
+        $this->assertSame(0, $this->list->getPixelList()->count());
     }
 }

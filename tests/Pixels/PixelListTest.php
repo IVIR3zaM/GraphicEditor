@@ -66,4 +66,17 @@ class PixelListTest extends TestCase
         $this->assertSame(0, $this->list->key());
         $this->assertTrue($this->list->valid());
     }
+
+    public function testResetObjects()
+    {
+        $this->assertSame(0, $this->list->count());
+
+        $this->list->addPixel(new Pixel(1, 12));
+        $this->list->addPixel(new Pixel(234, 176));
+
+        $this->assertSame(2, $this->list->count());
+
+        $this->list->resetPixels();
+        $this->assertSame(0, $this->list->count());
+    }
 }

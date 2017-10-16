@@ -46,6 +46,12 @@ trait ObjectListIteratorTrait
         return $this;
     }
 
+    protected function resetObjects()
+    {
+        $this->list = [];
+        return $this;
+    }
+
     public function count()
     {
         return count($this->list);

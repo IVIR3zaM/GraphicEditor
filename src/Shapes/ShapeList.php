@@ -35,4 +35,9 @@ class ShapeList implements ShapeListInterface
     {
         return $this->removeObjectByIndex($index);
     }
+
+    public function resetShapes()
+    {
+        return $this->resetObjects();
+    }
 }

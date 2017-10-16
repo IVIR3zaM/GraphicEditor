@@ -65,4 +65,17 @@ class ShapeListTest extends TestCase
         $this->assertSame(0, $this->list->key());
         $this->assertTrue($this->list->valid());
     }
+
+    public function testResetObjects()
+    {
+        $this->assertSame(0, $this->list->count());
+
+        $this->list->addShape(new FakeShape());
+        $this->list->addShape(new FakeShape());
+
+        $this->assertSame(2, $this->list->count());
+
+        $this->list->resetShapes();
+        $this->assertSame(0, $this->list->count());
+    }
 }

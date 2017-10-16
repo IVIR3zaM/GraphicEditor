@@ -35,4 +35,9 @@ class PixelList implements PixelListInterface
     {
         return $this->removeObjectByIndex($index);
     }
+
+    public function resetPixels()
+    {
+        return $this->resetObjects();
+    }
 }

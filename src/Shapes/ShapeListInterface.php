@@ -19,4 +19,6 @@ interface ShapeListInterface extends \Iterator, \Countable
      * @param int $index
      */
     public function removeShapeByIndex($index);
+
+    public function resetShapes();
 }

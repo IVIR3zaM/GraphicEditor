@@ -19,4 +19,6 @@ interface PixelListInterface extends \Iterator, \Countable
      * @param int $index
      */
     public function removePixelByIndex($index);
+
+    public function resetPixels();
 }

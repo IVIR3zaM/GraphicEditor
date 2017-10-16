@@ -55,4 +55,9 @@ class ListFacade implements ListFacadeInterface
         $this->getPixelList()->addPixel($pixel);
         return $this;
     }
+
+    public function resetPixels()
+    {
+        $this->getPixelList()->resetPixels();
+    }
 }
