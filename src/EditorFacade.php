@@ -3,6 +3,8 @@ namespace IVIR3aM\GraphicEditor;
 
 use IVIR3aM\GraphicEditor\Colors\FlyweightFactory;
 use IVIR3aM\GraphicEditor\Colors\FlyweightFactoryInterface as ColorFactoryInterface;
+use IVIR3aM\GraphicEditor\Shapes\Factory as ShapeFactory;
+use IVIR3aM\GraphicEditor\Shapes\FactoryInterface as ShapeFactoryInterface;
 use Exception;
 use ReflectionClass;
 use IVIR3aM\GraphicEditor\Drivers\BinaryImage;
@@ -16,6 +18,7 @@ class EditorFacade implements EditorFacadeInterface
 {
     protected $editor;
     protected $colorFactory;
+    protected $shapeFactory;
     protected $isSetup = false;
     protected $defaultSettings = [
         'ColorFactory' => FlyweightFactory::class,
@@ -24,14 +27,22 @@ class EditorFacade implements EditorFacadeInterface
         'PixelListFacade' => PixelListFacade::class,
         'ResponseFactory' => ResponseFactory::class,
         'ShapeList' => ShapeList::class,
+        'ShapeFactory' => ShapeFactory::class,
         'Driver' => BinaryImage::class,
         'Editor' => Editor::class,
     ];
     protected $settings = [];
 
-    public function __construct($settings = [])
+    public function __construct($shapes = [], $settings = [])
     {
-        $this->setSettings($settings);
+        if (empty($shapes)) {
+            $this->setSettings($settings);
+        } else {
+            $this->setUp($settings);
+            foreach ($shapes as $type => $params) {
+                $this->addShapeByArray($type, $params);
+            }
+        }
     }
 
     protected function getNewObject($name)
@@ -64,7 +75,10 @@ class EditorFacade implements EditorFacadeInterface
     public function setUp($settings = [])
     {
         $this->setSettings($settings);
-        $this->setColorFactory($this->getNewObject('ColorFactory'));
+        $colorFactory = $this->getNewObject('ColorFactory');
+        $this->setColorFactory($colorFactory);
+        $this->setShapeFactory($this->getNewObject('ShapeFactory'));
+        $this->getShapeFactory()->setColorFactory($colorFactory);
         $editor = $this->getNewObject('Editor');
 
         $pixelList = $this->getNewObject('PixelList');
@@ -105,6 +119,12 @@ class EditorFacade implements EditorFacadeInterface
         return $this;
     }
 
+    public function addShapeByArray($type, $params = [])
+    {
+        $shape = $this->getShapeFactory()->makeShape($type, $params);
+        $this->addShape($shape);
+    }
+
     /**
      * @return ResponseInterface
      */
@@ -134,5 +154,16 @@ class EditorFacade implements EditorFacadeInterface
     public function getEditor()
     {
         return $this->editor;
+    }
+
+    public function setShapeFactory(ShapeFactoryInterface $factory)
+    {
+        $this->shapeFactory = $factory;
+        return $this;
+    }
+
+    public function getShapeFactory()
+    {
+        return $this->shapeFactory;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace IVIR3aM\GraphicEditor\Tests;
 
+use IVIR3aM\GraphicEditor\Color;
 use IVIR3aM\GraphicEditor\Colors\FlyweightFactory;
 use IVIR3aM\GraphicEditor\Drivers\JsonArrayPoints;
 use IVIR3aM\GraphicEditor\Editor;
@@ -58,5 +59,22 @@ class EditorFacadeTest extends TestCase
             ['x' => 101, 'y' => 99, 'color' => '#000000'],
         ];
         $this->assertEquals(json_encode($sample), $response->getBody());
+    }
+
+    public function testAddShapeByArray()
+    {
+        $this->editor = new EditorFacade([
+            'circle' => [
+                'cx' => 1,
+                'cy' => 2,
+                'radius' => 3,
+                'color' => [123, 6, 2],
+            ]
+        ]);
+        $this->assertSame(1, $this->editor->getEditor()->getShapeList()->count());
+
+        $shape = new Circle();
+        $shape->setCx(1)->setCy(2)->setRadius(3)->setColor(new Color(123, 6, 2));
+        $this->assertEquals($shape, $this->editor->getEditor()->getShapeList()->getShape(0));
     }
 }
